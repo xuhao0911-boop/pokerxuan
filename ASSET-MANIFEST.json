@@ -1,0 +1,83 @@
+{
+  "format": "Compressed display assets; original artwork is retained locally.",
+  "images": [
+    {
+      "original": "public/avatar-animals.png",
+      "deployed": "public/avatar-animals.png.webp",
+      "original_sha256": "7c69573b3cd28f41444d9a628afa2b7f3f01a7671317ab0b7edd06ec5088306b",
+      "bytes": 144856
+    },
+    {
+      "original": "public/avatar-doubao.png",
+      "deployed": "public/avatar-doubao.png.webp",
+      "original_sha256": "42697843aff1ba11e9cd8db6cff2ea892a269c8ec67d0fdec6f27e545978d5b6",
+      "bytes": 32398
+    },
+    {
+      "original": "public/avatar-meituan.jpg",
+      "deployed": "public/avatar-meituan.jpg.webp",
+      "original_sha256": "1d697c2291cad2997f23733c467e86136bdff465f93f0412714489b1f1a3bf0f",
+      "bytes": 40014
+    },
+    {
+      "original": "public/avatar-mooncat.png",
+      "deployed": "public/avatar-mooncat.png.webp",
+      "original_sha256": "9b04b090ed6661038f0a61d95e03e17612ed99f8b37de7cde8927701da50fbe8",
+      "bytes": 33220
+    },
+    {
+      "original": "public/avatar-nailoong.png",
+      "deployed": "public/avatar-nailoong.png.webp",
+      "original_sha256": "cf22c81e54328d20c7b63d48e7fef1ad3db282b4257ff60efd4909327723fe73",
+      "bytes": 72708
+    },
+    {
+      "original": "public/avatar-naiwa.webp",
+      "deployed": "public/avatar-naiwa.webp",
+      "original_sha256": "34d675868d748bccaf989554068857a6b86f450d0d700ac41cf6b3d7cc6f7a78",
+      "bytes": 6744
+    },
+    {
+      "original": "public/home-blackgold-desktop.png",
+      "deployed": "public/home-blackgold-desktop.png.webp",
+      "original_sha256": "565d9a188947966007a0dd26c3212eac00f07b5996717ccf2ae8751e0e0d333a",
+      "bytes": 175900
+    },
+    {
+      "original": "public/home-blackgold-phone.png",
+      "deployed": "public/home-blackgold-phone.png.webp",
+      "original_sha256": "10fdd444ee6ee38f5b638c521608b4bf636f268d1760a8cdacbfd2b0a431f55d",
+      "bytes": 136504
+    },
+    {
+      "original": "public/icon.svg",
+      "deployed": "public/icon.svg",
+      "original_sha256": "61b6e0477a4ef326ad871a18fecde27e86d433709d10d93b2b0975e3fa24e79b",
+      "bytes": 239
+    },
+    {
+      "original": "public/scene-aurora.jpg",
+      "deployed": "public/scene-aurora.jpg.webp",
+      "original_sha256": "b6f86b25c100e0ca5f7bda5614f9970cb1394d02839798085e0b4c4911b1cc0f",
+      "bytes": 308016
+    },
+    {
+      "original": "public/scene-island.jpg",
+      "deployed": "public/scene-island.jpg.webp",
+      "original_sha256": "8f706f895b909a4f3f344ebf6c57b2b9ca022d71f2c1bf934e0ec27171adf099",
+      "bytes": 264628
+    },
+    {
+      "original": "public/scene-neon.jpg",
+      "deployed": "public/scene-neon.jpg.webp",
+      "original_sha256": "9faca7d41a094d67c1be045e4a813597d7ad8c4d8e2459d9a96671b62e00ff6d",
+      "bytes": 226816
+    },
+    {
+      "original": "public/scene-sunset.jpg",
+      "deployed": "public/scene-sunset.jpg.webp",
+      "original_sha256": "84f40edc03a1421228da3d8f02a57edb405d3ae7763fbbaee6b9488fe9a7ddf2",
+      "bytes": 120548
+    }
+  ]
+}

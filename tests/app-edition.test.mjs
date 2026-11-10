@@ -11,5 +11,5 @@ test('the five requested character identities persist and synchronize as allowli
   const friend=await request('/'+host.room.id+'/join',{name:'乙',avatar});assert.equal(friend.status,200);assert(friend.room.members.every(m=>m.avatar===avatar));
   const again=await request('/'+host.room.id,undefined,host.token);assert(again.room.members.every(m=>m.avatar===avatar));
  }
- for(const avatar of ['<img src=x>','/avatar-mooncat.png','fatcat'])assert.equal((await request('',{name:'甲',avatar,seats:2,stackBB:100})).status,400);
+ for(const avatar of ['<img src=x>','/avatar-mooncat.png.webp','fatcat'])assert.equal((await request('',{name:'甲',avatar,seats:2,stackBB:100})).status,400);
 });
