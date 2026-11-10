@@ -1,0 +1,25 @@
+/* The opening draw lives on the felt and leaves no result bar after dealing. */
+#arena.is-drawing .waiting{display:none!important}
+#dealerDrawPanel{position:absolute;left:50%;top:50%;translate:-50% -50%;width:min(86%,680px);height:265px;z-index:8;color:#f5f3df;text-align:center;pointer-events:none;container-type:inline-size;--rail-card-w:36px;--draw-card-w:68px;--draw-card-h:95px;--travel-y:-86px}
+#dealerDrawPanel[hidden]{display:none!important}
+.draw-title{font-size:16px;font-weight:600;letter-spacing:3px;line-height:24px}
+.draw-stage{position:relative;height:206px;margin-top:12px;perspective:900px}
+.draw-rail{position:absolute;left:0;right:0;top:8px;height:52px}
+.draw-rail-card{position:absolute;left:calc(var(--slot)*(100% - var(--rail-card-w)));top:0;width:var(--rail-card-w);height:calc(var(--rail-card-w)*1.4);animation:draw-spread var(--draw-duration) both;animation-delay:var(--draw-delay)}
+#dealerDrawPanel .card{position:relative!important;inset:auto!important;transform:none!important;translate:none!important;scale:none!important;margin:0!important;padding:0!important;width:100%!important;height:100%!important;border-radius:5px;opacity:1;box-shadow:0 2px 3px #001c1466}
+.draw-rail-card.draw-picked>.card{animation:draw-remove var(--draw-duration) both;animation-delay:var(--draw-delay)}
+.draw-choices{position:absolute;left:0;right:0;top:94px;height:112px}
+.draw-choice{position:absolute;left:calc(var(--target)*100%);top:0;width:var(--draw-card-w);translate:-50% 0;perspective:800px}
+.draw-flight{width:var(--draw-card-w);height:var(--draw-card-h);animation:draw-pull var(--draw-duration) both;animation-delay:var(--draw-delay)}
+.draw-flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:draw-turn var(--draw-duration) both;animation-delay:var(--draw-delay)}
+.draw-back,.draw-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}.draw-face{transform:rotateY(180deg)}
+.draw-name{display:block;margin-top:8px;width:100px;position:relative;left:50%;translate:-50% 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;line-height:20px;animation:draw-label var(--draw-duration) both;animation-delay:var(--draw-delay)}
+.draw-outcome{height:24px;line-height:24px;font-size:15px;font-weight:600;color:#f2d27e;letter-spacing:1px}
+#dealerDrawPanel[data-stage=result] .draw-leader .draw-face .card{outline:2px solid #e8ca75;outline-offset:3px}
+@keyframes draw-spread{0%{left:0}18%,100%{left:calc(var(--slot)*(100% - var(--rail-card-w)))}}
+@keyframes draw-remove{0%,19%{opacity:1}22%,100%{opacity:0}}
+@keyframes draw-pull{0%,19%{opacity:0;transform:translate(calc(var(--origin)*(100cqw - var(--rail-card-w)) + var(--rail-card-w)/2 - var(--target)*100cqw),var(--travel-y)) scale(.53)}22%{opacity:1;transform:translate(calc(var(--origin)*(100cqw - var(--rail-card-w)) + var(--rail-card-w)/2 - var(--target)*100cqw),var(--travel-y)) scale(.53)}43%,100%{opacity:1;transform:translate(0,0) scale(1)}}
+@keyframes draw-turn{0%,47%{transform:rotateY(0)}58%,100%{transform:rotateY(180deg)}}
+@keyframes draw-label{0%,42%{opacity:0;transform:translateY(6px)}49%,100%{opacity:1;transform:translateY(0)}}
+@media(max-width:680px){#dealerDrawPanel{width:88%;height:228px;--rail-card-w:25px;--draw-card-w:48px;--draw-card-h:67px;--travel-y:-73px}.draw-title{font-size:13px;letter-spacing:2px}.draw-stage{height:170px;margin-top:7px}.draw-choices{top:81px}.draw-name{font-size:11px;width:70px;margin-top:8px}.draw-outcome{font-size:13px}#arena:not(.hu) #dealerDrawPanel{width:91%;--draw-card-w:36px;--draw-card-h:51px}.arena:not(.hu) .draw-name{width:45px;font-size:10px}#arena.is-drawing:not(.hu) .player:is(.pos-1,.pos-2,.pos-4,.pos-5){visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.draw-rail-card{animation:none}.draw-rail-card.draw-picked>.card{animation:none}.draw-flight{animation:none;opacity:0}.draw-flip{animation:none;transform:none}.draw-name{animation:none;opacity:0}#dealerDrawPanel:is([data-stage=pick],[data-stage=flip],[data-stage=result]) .draw-picked{opacity:0}#dealerDrawPanel:is([data-stage=pick],[data-stage=flip],[data-stage=result]) .draw-flight,#dealerDrawPanel:is([data-stage=pick],[data-stage=flip],[data-stage=result]) .draw-name{opacity:1}#dealerDrawPanel[data-stage=result] .draw-flip{transform:rotateY(180deg)}}

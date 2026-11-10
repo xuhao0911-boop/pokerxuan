@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+let h=await fs.readFile('public/index.html','utf8');h=h.replace('<link rel="stylesheet" href="/classic.css">','<link rel="stylesheet" href="/classic.css"><link rel="stylesheet" href="/deck.css">');
+h=h.replace('<div id="createOptions">','<label class="field-label avatar-label">头像</label><div id="avatarPicker" class="avatar-picker" role="group" aria-label="选择动物头像"></div><div id="createOptions">').replace('<span id="timerValue">20</span>','<span id="timerValue">30</span>');await fs.writeFile('public/index.html',h);
+let a=await fs.readFile('public/app.js','utf8');
+a=a.replace("const PHRASES=",`const ANIMALS={panda:['🐼','熊猫'],cat:['🐱','猫'],fox:['🦊','狐狸'],dog:['🐶','狗'],rabbit:['🐰','兔子'],tiger:['🐯','老虎']};\nlet avatarChoice='panda';try{avatarChoice=localStorage.getItem('px-avatar')||'panda';}catch{}if(!ANIMALS[avatarChoice])avatarChoice='panda';\nconst PHRASES=`);
+a=a.replace('{name,...(!id?','{name,avatar:avatarChoice,...(!id?');
+a=a.replace('<div class="avatar">${esc([...p.name][0])}</div>','<div class="avatar animal" role="img" aria-label="${ANIMALS[m.avatar||Object.keys(ANIMALS)[i%6]]?.[1]||\'动物头像\'}">${ANIMALS[m.avatar||Object.keys(ANIMALS)[i%6]]?.[0]||\'🐼\'}</div>');
+a=a.replace('sec/20*100','sec/(state.turnSeconds||30)*100');
+a+=`\nfunction avatarUI(){$('#avatarPicker').innerHTML=Object.entries(ANIMALS).map(([id,[face,label]])=>'<button type="button" class="avatar-choice '+(id===avatarChoice?'selected':'')+'" data-animal="'+id+'" aria-label="'+label+'" aria-pressed="'+(id===avatarChoice)+'">'+face+'</button>').join('');$$('button[data-animal]').forEach(b=>b.onclick=()=>{avatarChoice=b.dataset.animal;try{localStorage.setItem('px-avatar',avatarChoice);}catch{}avatarUI();});}avatarUI();\n`;
+await fs.writeFile('public/app.js',a);

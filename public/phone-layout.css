@@ -1,0 +1,72 @@
+/* Portrait phones reserve separate space for cards, seats and controls. */
+.blind-badge{position:absolute;left:44px;top:45px;z-index:7;display:grid;place-items:center;width:32px;height:24px;border:2px solid #eed795;border-radius:7px;background:#e1be65;color:#16271d;font:bold 12px Arial,sans-serif;box-shadow:none}
+.post-hand-actions #nextHandBtn{background:#277e45;color:#fff8df;border-color:#8bbd7e}
+@media(max-width:680px){
+ body:has(#room:not([hidden])){height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:auto}
+ .room{height:calc(100svh - 52px - env(safe-area-inset-top));min-height:610px;padding:0 12px}
+ .room-toolbar{height:42px;min-height:42px}.table-caption{height:18px;min-height:18px}
+ .play-layout,.play-layout.with-stats{display:flex;min-height:0;gap:0}
+ .play-surface{padding:0;display:flex;flex-direction:column;min-height:0;width:100%}
+ #arena,#arena.hu,.with-stats #arena{flex:1;min-height:360px;height:auto;width:100%;margin:5px auto 0}
+ #arena .table-rim,#arena.hu .table-rim{top:40px;bottom:51px;left:12px;right:12px;padding:11px;border-radius:46% / 29%}
+ #arena .player,#arena .player.mine,.with-stats #arena .player{width:150px;height:59px}
+ #arena .player .avatar.animal,.with-stats #arena .player .avatar.animal{width:54px!important;height:54px!important;font-size:35px!important;left:0;top:0}
+ #arena .player .player-info,.with-stats #arena .player .player-info{left:40px;top:2px;min-height:52px;padding:7px 5px 6px 17px;border-radius:8px}
+ #arena .player .player-name,.with-stats #arena .player .player-name{font-size:13px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+ #arena .player .player-stack,.with-stats #arena .player .player-stack{font-size:21px;margin-top:3px}
+ #arena .player.mine,.with-stats #arena .player.mine{left:50%;bottom:7px}
+ #arena.hu .player.pos-3{top:1px}
+ #arena .player.mine .hole-cards,.with-stats #arena .player.mine .hole-cards{left:50%;top:-77px;height:69px;gap:5px;transform:translateX(-50%)}
+ #arena .player.mine .card[role=img],.with-stats #arena .player.mine .card[role=img]{width:49px;height:69px}
+ #arena .player:not(.mine) .hole-cards{left:-38px;top:9px;height:33px}
+ #arena .player:not(.mine) .card[role=img]{width:24px;height:33px}
+ #arena .player .player-status{top:57px;font-size:9px;height:12px;margin:0}
+ #arena .player .dealer{left:36px!important;top:39px!important;width:24px;height:24px}
+ #arena .player .blind-badge{left:35px;top:37px;width:29px;height:22px;font-size:11px;border-width:1px}
+ #arena .board-zone,#arena.hu .board-zone{position:absolute;left:50%;top:clamp(74px,calc(50% - 132px),190px);transform:translateX(-50%);display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:7px;max-width:270px;width:max-content}
+ #arena .pot{grid-row:1;grid-column:1;margin:0;min-height:31px;padding:5px 8px;font-size:11px;gap:5px}
+ #arena .pot strong{font-size:23px}#arena .pot .stack-bb{font-size:11px}
+ #arena .phase{grid-row:1;grid-column:2;position:static;inset:auto;margin:0;padding:7px 8px;font-size:11px;letter-spacing:0;max-width:none}
+ #arena .community{grid-row:2;grid-column:1 / -1;height:63px;gap:5px;margin:0}
+ #arena .community .card{width:44px;height:63px}
+ #arena .last-action,#arena .result{grid-row:3;grid-column:1 / -1;position:static;inset:auto;justify-self:center;width:max-content;max-width:260px;margin:0;padding:6px 9px;font-size:12px;line-height:1.25;white-space:normal}
+ #arena .table-brand{grid-row:4;grid-column:1 / -1;position:static;margin:0;font-size:17px;line-height:1.1;justify-self:center}
+ #arena.hu .wager-3{top:calc(50% + 5px);left:84%}
+ .action-dock,.with-stats .action-dock{flex:none;position:static;width:100%;max-width:none;margin:13px 0 0;padding:9px 0 0;border:0;border-top:1px solid #3d5544;border-radius:0;background:transparent}
+ .bet-row,.with-stats .bet-row{grid-template-columns:minmax(0,1fr) 142px;gap:9px;margin:0 0 9px}
+ .presets{height:37px}.presets button,.presets button:last-child{height:35px;font-size:12px}
+ .action-buttons{gap:9px}.action-buttons button{height:54px;border-radius:8px}
+ .action-buttons button strong,.action-buttons button span{font-size:16px}
+ .under-table{flex:none;height:calc(49px + env(safe-area-inset-bottom));min-height:calc(49px + env(safe-area-inset-bottom));padding:7px 0 env(safe-area-inset-bottom);margin:0;background:transparent}
+ .under-table>div{width:100%;gap:8px}.under-table button{height:36px;flex:1;font-size:12px;min-width:0}
+ .under-table .time-card{flex:1}.post-hand-actions{gap:7px;margin:0 0 8px}.post-hand-actions button{height:43px;font-size:13px;min-width:0;padding:0 5px}
+ .next-hand-status{padding:8px 10px;font-size:12px}
+ .stats-side-tab{top:calc(94px + env(safe-area-inset-top));height:50px;z-index:16}
+ .with-stats .play-surface{visibility:hidden}
+ .stats-panel{position:fixed;inset:64px 10px 12px;width:auto;max-width:none;max-height:none;height:auto;z-index:50;background:#173b2d;border:1px solid #82966e;border-radius:12px;padding:15px;overflow:auto;overscroll-behavior:contain}
+ .stats-heading{top:-15px;min-height:48px;background:#173b2d}#closeStats{width:40px;height:40px;font-size:25px}
+ body:has(.with-stats #statsPanel:not([hidden])){overflow:hidden}
+ #arena:not(.hu) .player,#arena:not(.hu) .player.mine{width:100px;height:48px}
+ #arena:not(.hu) .player .avatar.animal{width:35px!important;height:35px!important;font-size:23px!important}
+ #arena:not(.hu) .player .player-info{left:25px;min-height:36px;padding:4px 3px 4px 10px}
+ #arena:not(.hu) .player .player-name{font-size:9px}#arena:not(.hu) .player .player-stack{font-size:15px}
+ #arena:not(.hu) .player .blind-badge{left:23px;top:25px;width:23px;height:17px;font-size:9px}
+ #arena:not(.hu) .board-zone{max-width:220px;top:clamp(105px,calc(50% - 104px),210px);gap:5px}
+ #arena:not(.hu) .community{height:46px;gap:3px}#arena:not(.hu) .community .card{width:32px;height:46px}
+ #arena:not(.hu) .pot strong{font-size:18px}#arena:not(.hu) .phase{font-size:9px;padding:6px}
+ #arena:not(.hu) .last-action,#arena:not(.hu) .result{font-size:10px;padding:4px 6px}#arena:not(.hu) .table-brand{font-size:14px}
+ #arena:not(.hu) .player.mine .hole-cards{top:-57px;height:49px}#arena:not(.hu) .player.mine .card[role=img]{width:35px;height:49px}
+ #arena:not(.hu) .pos-2,#arena:not(.hu) .pos-4{top:67px}#arena:not(.hu) .pos-1,#arena:not(.hu) .pos-5{bottom:84px}
+}
+@media(max-width:680px) and (max-height:730px){
+ #arena .board-zone,#arena.hu .board-zone{gap:5px;top:clamp(72px,calc(50% - 132px),130px)}
+ #arena .community{height:56px;gap:4px}#arena .community .card{width:40px;height:56px}
+ #arena .pot{min-height:29px;padding:4px 7px}#arena .pot strong{font-size:21px}
+ #arena .last-action,#arena .result{font-size:11px;padding:5px 8px}#arena .table-brand{font-size:16px}
+ #arena .player.mine .hole-cards{top:-69px;height:62px}#arena .player.mine .card[role=img]{width:44px;height:62px}
+ .action-dock,.with-stats .action-dock{margin-top:9px;padding-top:7px}.action-buttons button{height:49px}.presets{height:34px}.presets button,.presets button:last-child{height:32px;font-size:11px}
+ #arena:not(.hu) .board-zone{top:clamp(100px,calc(50% - 104px),170px)}
+ #arena:not(.hu) .community{height:43px}#arena:not(.hu) .community .card{width:30px;height:43px}
+ #arena:not(.hu) .player.mine .hole-cards{top:-52px;height:46px}#arena:not(.hu) .player.mine .card[role=img]{width:33px;height:46px}
+}
+@media(orientation:landscape) and (max-height:500px) and (min-width:681px){.blind-badge{left:30px;top:31px;width:26px;height:20px;font-size:10px}}

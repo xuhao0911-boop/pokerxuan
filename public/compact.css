@@ -1,0 +1,71 @@
+/* Centered hand, borderless controls and a dedicated data sidebar. */
+.turn-line{display:none!important}
+.action-dock,.with-stats .action-dock{position:static;inset:auto;width:min(560px,100%);max-width:560px;min-height:0;margin:8px auto 0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.bet-row,.with-stats .bet-row{grid-template-columns:minmax(0,1fr) 205px;gap:10px;margin-bottom:7px}
+.action-buttons button{height:49px}.action-buttons button strong,.action-buttons button span{font-size:16px}
+.presets{height:32px}.presets button,.presets button:last-child{height:30px;font-size:12px}
+.bet-value{height:25px}.slider-controls{height:28px}.bet-adjust{height:26px;width:29px;min-width:29px;font-size:22px}
+.under-table{min-height:43px;margin-top:6px;justify-content:flex-start}.under-table>div{gap:8px}.under-table button{height:35px;min-width:100px;font-size:12px;padding:0 13px}
+.under-table .time-card{display:flex;align-items:center;justify-content:center;gap:7px;position:static;background:#244c66;min-width:94px;width:auto;padding:0 10px;border:1px solid #a8b6ac;border-radius:7px;color:#eff5e5;box-shadow:none}
+.under-table .time-card-icon{display:none}.under-table .time-card-label{font-size:14px}.under-table .time-card-label:before{content:'+'}.under-table .time-card-label small{font-size:10px;color:#d6e5e5}.under-table .time-count{position:static;display:grid;place-items:center;border:1px solid #819b9b;background:#1b3542;border-radius:4px;width:19px;min-width:19px;height:19px;padding:0;font-size:11px}
+.stats-side-tab{position:fixed;right:0;top:150px;width:34px;height:112px;writing-mode:vertical-rl;text-orientation:mixed;z-index:15;background:#244c5b;border:1px solid #9fb6a6;border-right:0;border-radius:8px 0 0 8px;color:#f0f3e6;letter-spacing:2px;font-size:13px}
+.with-stats>.stats-side-tab{display:none}
+#arena .player.mine,.with-stats #arena .player.mine{left:50%;bottom:4px}
+#arena .player.mine .hole-cards,.with-stats #arena .player.mine .hole-cards{left:50%;right:auto;top:-84px;height:77px;transform:translateX(-50%);gap:5px}
+#arena .player.mine .card[role=img],.with-stats #arena .player.mine .card[role=img]{height:77px;width:55px}
+@media(min-width:1051px){
+ .play-layout.with-stats{grid-template-columns:minmax(0,1fr) 290px;gap:20px}
+ .play-surface{min-width:0}
+ #arena,.with-stats #arena{height:clamp(430px,calc(100svh - 278px),620px);min-height:430px}
+ #arena .player,.with-stats #arena .player{width:180px;height:74px}
+ #arena .player .avatar.animal,.with-stats #arena .player .avatar.animal{height:64px!important;width:64px!important;font-size:41px!important}
+ #arena .player .player-info,.with-stats #arena .player .player-info{left:48px;min-height:61px;padding:7px 7px 7px 18px}
+ #arena .player .player-name,.with-stats #arena .player .player-name{font-size:16px}#arena .player .player-stack,.with-stats #arena .player .player-stack{font-size:23px}
+ #arena .player .player-status{top:65px;font-size:10px}
+ #arena .player .dealer{top:49px!important;left:47px!important;width:27px;height:27px}#arena .player .dealer small{display:none}
+ #arena .board-zone,.with-stats #arena .board-zone{top:17%;display:grid;grid-template-columns:auto auto;justify-content:center;align-items:center;gap:6px;max-width:480px}
+ .pot{grid-row:1;grid-column:1;min-height:38px;font-size:14px;padding:6px 11px;gap:7px}.pot strong{font-size:26px}.pot .stack-bb{font-size:13px}.pot .pot-mark{width:21px;height:21px;border-width:4px;outline-width:1px;margin-right:2px}
+ #arena .phase{grid-row:1;grid-column:2;font-size:14px;padding:7px 11px;letter-spacing:0;position:relative;left:55px}
+ #arena .community,.with-stats #arena .community{grid-row:2;grid-column:1 / -1;height:77px;margin:0;gap:6px}
+ #arena .community .card,.with-stats #arena .community .card{width:55px;height:77px}
+ #arena .last-action,#arena .result{grid-row:3;grid-column:1 / -1;justify-self:center;font-size:14px;padding:6px 11px;border-width:1px}
+ #arena .table-brand{grid-row:4;grid-column:1 / -1;justify-self:center;font-size:19px}
+ .stats-panel{max-height:calc(100svh - 125px);padding:14px}.stats-heading{top:-14px}.stats-heading>strong{font-size:18px}
+ .metric{padding:10px;min-height:84px}.metric>strong{font-size:24px}.stats-summary strong{font-size:21px}
+ .action-dock,.with-stats .action-dock{position:static;width:min(560px,100%);margin:8px auto 0;padding:0;border:0;background:transparent}
+ .with-stats .bet-row{grid-template-columns:minmax(0,1fr) 205px;gap:10px}
+ .with-stats .under-table button{min-width:100px;font-size:12px}
+}
+@media(max-width:680px){
+ #arena .player.mine,.with-stats #arena .player.mine{left:50%;bottom:3px}
+ #arena .player.mine .hole-cards,.with-stats #arena .player.mine .hole-cards{left:50%;top:-66px;height:61px;gap:3px;transform:translateX(-50%)}
+ #arena .player.mine .card[role=img],.with-stats #arena .player.mine .card[role=img]{width:43px;height:61px}
+ #arena .board-zone,#arena.hu .board-zone{top:22%;gap:5px}
+ .action-dock,.with-stats .action-dock{position:static;flex:0 0 auto;width:100%;margin:5px 0 0;padding:0;min-height:0;background:transparent;border:0}
+ .bet-row,.with-stats .bet-row{grid-template-columns:minmax(0,1fr) 137px;gap:7px;margin-bottom:7px}
+ .action-buttons button{height:49px}.action-buttons button strong,.action-buttons button span{font-size:15px}
+ .under-table{height:calc(45px + env(safe-area-inset-bottom));min-height:calc(45px + env(safe-area-inset-bottom));margin:0;padding-top:5px;padding-left:0;padding-right:0;background:transparent}
+ .under-table>div{width:100%;gap:7px}.under-table button{height:35px;min-width:0;padding:0 8px;font-size:12px}.under-table .time-card{min-width:0;gap:5px}
+ .under-table .time-card-label{font-size:13px}.under-table .time-count{width:17px;min-width:17px;height:17px;font-size:10px}
+ .stats-side-tab{top:calc(110px + env(safe-area-inset-top));width:28px;height:63px;font-size:0;letter-spacing:0;border-radius:6px 0 0 6px}
+ .stats-side-tab:before{content:'数据';display:inline-block;writing-mode:vertical-rl;font-size:12px;letter-spacing:4px;line-height:26px}
+ .stats-panel{z-index:26}
+ #arena:not(.hu) .player.mine .hole-cards{left:50%;top:-51px;height:48px;transform:translateX(-50%)}#arena:not(.hu) .player.mine .card[role=img]{width:33px;height:48px}
+ #arena:not(.hu) .board-zone{top:29%;gap:4px}
+}
+@media(max-width:680px) and (max-height:730px){
+ #arena .board-zone,#arena.hu .board-zone{top:21%;gap:4px}
+ #arena .community{height:51px}#arena .community .card{width:36px;height:51px}
+ #arena .last-action,#arena .result{font-size:11px;padding:5px 8px}#arena .table-brand{font-size:15px}
+ #arena:not(.hu) .board-zone{top:28%;gap:3px}#arena:not(.hu) .community{height:43px}#arena:not(.hu) .community .card{width:30px;height:43px}
+}
+@media(orientation:landscape) and (max-height:500px) and (min-width:681px){
+ .play-surface{padding-right:245px}
+ .action-dock,.with-stats .action-dock{position:absolute;right:0;bottom:44px;width:230px;max-width:230px;margin:0;padding:0;background:transparent;border:0}
+ .bet-row,.with-stats .bet-row{grid-template-columns:1fr;gap:5px}.action-buttons button{height:45px}.action-buttons button strong,.action-buttons button span{font-size:12px}
+ #arena .player.mine,.with-stats #arena .player.mine{left:50%;bottom:0}#arena .player.mine .hole-cards,.with-stats #arena .player.mine .hole-cards{left:50%;top:-45px;transform:translateX(-50%);height:41px}
+ #arena .player.mine .card[role=img],.with-stats #arena .player.mine .card[role=img]{width:29px;height:41px}
+ #arena .board-zone{top:22%;gap:3px}#arena .table-brand{font-size:12px}#arena .community{height:37px}#arena .community .card{width:26px;height:37px}#arena .last-action,#arena .result{font-size:9px;padding:3px 6px}
+ .under-table{position:absolute;right:0;bottom:0;width:230px;min-height:35px;height:35px;margin:0}.under-table>div{width:100%;gap:5px}.under-table button{height:33px;min-width:0;flex:1;font-size:11px;padding:0 4px}.under-table .time-card{min-width:0;font-size:10px;gap:3px}.under-table .time-count{width:15px;height:15px;min-width:15px}
+ .stats-side-tab{top:75px;width:28px;height:70px;font-size:11px}
+}

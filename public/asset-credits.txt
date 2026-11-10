@@ -1,0 +1,19 @@
+PokerXuan portrait references
+
+Mooncat / 月半猫: reference supplied by the site owner; displayed with CSS portrait framing.
+Naiwa / 奶蛙: https://naiwahub.com/media/naiwa/naiwa-01-poster.webp
+Nailoong / 奶龙: https://www.nailoong.com/_ipx/q_85/img/aboutUs/wholeFamily.png
+Meituan meme / 美团袋鼠: https://www.digitaling.com/articles/1568839.html
+Doubao / 豆包: published App Store artwork, app ID 6459478672.
+Panda, fox, Shiba Inu and orange cat: generated concept artwork from this project's avatar preview; displayed as CSS portraits.
+
+The character selection labels identify the references requested by the site owner.
+No association or endorsement by these characters' creators is implied.
+
+UI typeface: Google Fonts Noto Sans SC, character subset for the app interface.
+License: NotoSansSC-OFL.txt (SIL Open Font License 1.1).
+
+Black/gold desktop and phone lobby artwork: generated for this project, November 2026.
+Background music: original procedural 84 BPM lounge score by PokerXuan; synthesized in the browser.
+Card and chip effects: procedural Web Audio synthesis.
+English action voice samples: synthesized locally with Microsoft Zira Desktop (Windows System.Speech). No remote audio service required.

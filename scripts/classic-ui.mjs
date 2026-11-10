@@ -1,0 +1,16 @@
+import fs from 'node:fs/promises';
+let h=await fs.readFile('public/index.html','utf8');
+h=h.replace('<link rel="stylesheet" href="/clear.css">','<link rel="stylesheet" href="/clear.css"><link rel="stylesheet" href="/classic.css">');
+h=h.replace(/<div class="bet-row">[\s\S]*?<div class="action-buttons">/,`<div class="bet-row"><div class="presets"><button data-size=".33">33%</button><button data-size=".5">50%</button><button data-size=".75">75%</button><button data-size="1">100%</button></div><div class="raise-control"><label class="bet-value"><input id="betValue" type="number" inputmode="decimal" aria-label="加注至" value="2"><small id="betUnit">BB</small></label><div class="slider-controls"><button id="betMinus" class="bet-adjust" aria-label="减少加注">−</button><input id="betSlider" type="range" aria-label="加注金额" min="200" max="10000" step="1" value="200"><button id="betPlus" class="bet-adjust" aria-label="增加加注">＋</button></div></div></div><div class="action-buttons">`);
+const times=h.match(/<div class="time-tools">[\s\S]*?<\/small><\/span><\/div>/)?.[0];if(!times)throw new Error('Time controls not found');h=h.replace(times,'');h=h.replace('<div class="result" id="result"',times+'<div class="result" id="result"');
+await fs.writeFile('public/index.html',h);
+let a=await fs.readFile('public/app.js','utf8');
+a=a.replace("...$$('[data-size]')])","...$$('[data-size]'),$('#betMinus'),$('#betPlus')])");
+a=a.replace("(b.id==='raise'||b.dataset.size)","(b.id==='raise'||b.id==='betMinus'||b.id==='betPlus'||b.dataset.size)");
+a=a.replace("$('#call').innerHTML=g.call?'跟注 <span>'+bb(g.call)+'</span>':'过牌';","$('#call').innerHTML=g.call?'<strong>跟注</strong><span>'+bb(g.call)+'</span>':'<strong>过牌</strong>'; ");
+a=a.replace("$('#betValue').value=unit==='bb'?+(n/100).toFixed(2):n;","$('#betValue').value=unit==='bb'?+(n/100).toFixed(2):n;$('#raise').innerHTML='<strong>加注</strong><span>'+bb(n)+'</span>';");
+a=a.replace("let g=state.game,p=g.players[g.youIndex];setBet(b.dataset.size==='all'?p.stack+p.street:Math.max(g.minRaise,g.bet+Math.round(g.pot*+b.dataset.size/50)*50));","let g=state.game,p=g.players[g.youIndex],call=Math.min(p.stack,Math.max(0,g.bet-p.street));setBet(Math.max(g.minRaise,g.bet+Math.round((g.pot+call)*+b.dataset.size)));$$('[data-size]').forEach(q=>q.classList.toggle('selected',q===b));");
+a=a.replace("const scenes=[['studio','简洁牌桌']","const scenes=[['studio','经典牌室']");
+a=a.replace('px-clear-design','px-classic-design');
+a+=`\n$('#betMinus').onclick=()=>{setBet(betChips-50);$$('[data-size]').forEach(b=>b.classList.remove('selected'));};$('#betPlus').onclick=()=>{setBet(betChips+50);$$('[data-size]').forEach(b=>b.classList.remove('selected'));};\n`;
+await fs.writeFile('public/app.js',a);

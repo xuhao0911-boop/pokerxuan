@@ -1,0 +1,31 @@
+import fs from 'node:fs/promises';
+let html=await fs.readFile('public/index.html','utf8');
+html=html.replace('<link rel="stylesheet" href="/style.css">','<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/table.css">');
+html=html.replace('<span class="edition">和朋友，打下一手。</span>','<button id="backgroundBtn" class="background-btn" aria-label="切换背景">▧ <span>背景</span></button>');
+html=html.replace(/<div class="intro">[\s\S]*?<section class="setup">/,'<section class="setup">');
+html=html.replace(/<div class="setup-top">[\s\S]*?<h2 id="setupTitle">[^<]*<\/h2><p id="setupSubtitle">[^<]*<\/p>/,'<h2 id="setupTitle">创建房间</h2><p id="setupSubtitle" hidden></p>');
+html=html.replace('牌桌上怎么称呼你？','输入昵称').replace('想先热个手？','或');
+html=html.replace(/<div class="home-footer">[\s\S]*?<\/div><\/main>/,'</main>');
+html=html.replace('<small>GOOD HANDS. GREAT COMPANY.</small>','');
+html=html.replace(/<aside class="room-side">[\s\S]*?<\/aside>/,'');
+html=html.replace('<h2>给朋友留了个座。</h2>','<h2>等待玩家</h2>');
+await fs.writeFile('public/index.html',html);
+let app=await fs.readFile('public/app.js','utf8');
+app=app.replace("const PHRASES=","const bb=n=>Number((Number(n||0)/100).toFixed(2)).toLocaleString('en-US')+' BB';\nconst PHRASES=");
+app=app.replace("'朋友给你留了个座。':'今晚，谁来坐庄？'","'加入房间':'创建房间'");
+app=app.replaceAll('朋友，这里有你的座。','邀请朋友').replaceAll('说两句，牌桌才热闹。','快捷语句').replaceAll('这一手，有迹可循。','牌局记录').replaceAll('简单开局，认真玩牌。','规则').replaceAll('先离开一会儿？','离开房间');
+app=app.replace("'好牌不怕等，下一手继续。'","'本手结束'").replace("'本场结束，下一场见？'","'本场结束'");
+app=app.replace("'复制邀请链接，让下一手开始。':'座位已就绪，准备好了就开打。'","'邀请朋友加入':'等待玩家准备'");
+app=app.replaceAll('fmt(p.stack)','bb(p.stack)').replaceAll('fmt(p.won)','bb(p.won)').replaceAll('fmt(p.street)','bb(p.street)');
+app=app.replace("$('#pot').textContent=fmt(g.pot)","$('#pot').textContent=bb(g.pot)");
+app=app.replace("fmt(g.call)","bb(g.call)");
+app=app.replace(/\s*\$\('#sideStack'\)[\s\S]*?\.join\(''\);clock\(\);}/," clock();}");
+app=app.replace("$('#inviteBtn').onclick=$('#copyInvite').onclick=$('#sideInvite').onclick=showInvite;","$('#inviteBtn').onclick=$('#copyInvite').onclick=showInvite;");
+app=app.replace("$('#sideInvite').hidden=r.practice;",'');
+app=app.replace("function setBet(n){", "function setBet(n){");
+app+=`\nconst scenes=[['sunset','落日都市'],['neon','霓虹雨夜'],['island','海岛黄昏'],['aurora','极光雪山']];
+function setScene(id){if(!scenes.some(s=>s[0]===id))id='sunset';document.body.dataset.scene=id;try{localStorage.setItem('px-scene',id);}catch{}}
+try{setScene(localStorage.getItem('px-scene')||'sunset');}catch{setScene('sunset');}
+$('#backgroundBtn').onclick=()=>{dialog('背景','<div class="scene-grid">'+scenes.map(([id,name])=>'<button data-scene="'+id+'" class="scene-option '+(document.body.dataset.scene===id?'selected':'')+'"><img src="/scene-'+id+'.jpg" alt="'+name+'"><span>'+name+'</span></button>').join('')+'</div>');$$('[data-scene]').forEach(b=>b.onclick=()=>{setScene(b.dataset.scene);$('#dialog').close();});};
+`;
+await fs.writeFile('public/app.js',app);
